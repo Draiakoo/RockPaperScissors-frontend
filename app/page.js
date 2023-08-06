@@ -57,7 +57,7 @@ export default function Home() {
             <p>Create a game by determining the amount to bet and the maximum duration of the game. You can create a lobby to play with a friend by awarding the spot for a specific address or open the lobby for everyone to join. You can also play for free by determining the bet amount to 0</p>
           </div>
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/create-game-landing.png"
             alt="paper image"
             width={700}
             height={150}
@@ -68,7 +68,7 @@ export default function Home() {
         {/* Join a game */}
         <div className="container-grid py-7 mb-10">
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/join-game-landing.jpg"
             alt="paper image"
             width={700}
             height={150}
@@ -91,7 +91,7 @@ export default function Home() {
             <p>Send your choice encrypted with the password on chain to generate the hash and wait for the opponent to do the same. Once both players have submited his hash, you can reveal what you chose by providing again your choice and the password</p>
           </div>
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/play-game-landing.png"
             alt="paper image"
             width={700}
             height={150}
@@ -102,7 +102,7 @@ export default function Home() {
         {/* Check your game log */}
         <div className="container-grid py-7 mb-10">
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/game-log-landing.jpg"
             alt="paper image"
             width={700}
             height={150}
@@ -125,7 +125,7 @@ export default function Home() {
             <p>Have you created a game by accident? No worries, as long as the game has not been started (nobody joined) you can cancel the game getting your bet amount back</p>
           </div>
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/cancel-game-landing.jpg"
             alt="paper image"
             width={700}
             height={150}
@@ -136,7 +136,7 @@ export default function Home() {
         {/* Close a game */}
         <div className="container-grid py-7 mb-10">
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/close-game-landing.jpg"
             alt="paper image"
             width={700}
             height={150}
@@ -159,7 +159,7 @@ export default function Home() {
             <p>Do you have a huge list of games? Filter from all the games of the lists with some parameters</p>
           </div>
           <Image 
-            src="/landing-images/balance-dashboard-landing.png"
+            src="/landing-images/filter-landing.png"
             alt="paper image"
             width={700}
             height={150}
