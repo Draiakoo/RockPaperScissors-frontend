@@ -9,6 +9,7 @@ import { FaCaretDown } from "react-icons/fa"
 import { chains, supportedChains, supportedNetworksInfo } from "@chains";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import Sidebar from "./Sidebar";
 
 
 const Nav = () => {
@@ -44,6 +45,7 @@ const Nav = () => {
       <nav className="bg-cyan-900">
           <div className="toast-container"><ToastContainer limit={2}/></div>
           <div className="flex-between w-full px-10 py-3 ">
+              <Sidebar />
               <Link href="/balance-dashboard" className="flex gap-2 flex-center">
               <Image 
               src="/game_logo.jpg"

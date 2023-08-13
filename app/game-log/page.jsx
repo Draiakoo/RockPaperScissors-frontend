@@ -366,6 +366,91 @@ export default function GameLog() {
     )
   }
 
+  const queryFinishedGamesWins = (user) => {
+    return(
+      gql`
+      {
+        stateOfGames (where: 
+          {and: [
+            {or: [
+            { creator: "${user}" },
+            { player2: "${user}" }
+            ]},
+            {state: 3},
+            {winner: "${user}"}
+          ]
+            }){
+          gameId
+          creator
+          player2
+          betAmount
+          expirationDate
+          state
+          winner
+          blockTimestamp
+        }
+      }
+  `
+    )
+  }
+
+  const queryFinishedGamesLoses = (user) => {
+    return(
+      gql`
+      {
+        stateOfGames (where: 
+          {and: [
+            {or: [
+            { creator: "${user}" },
+            { player2: "${user}" }
+            ]},
+            {state: 3},
+            { winner_not: "${user}"},
+            { winner_not: "0x0000000000000000000000000000000000000000"},
+          ]
+            }){
+          gameId
+          creator
+          player2
+          betAmount
+          expirationDate
+          state
+          winner
+          blockTimestamp
+        }
+      }
+  `
+    )
+  }
+
+  const queryFinishedGamesTiesAndCancelled = (user) => {
+    return(
+      gql`
+      {
+        stateOfGames (where: 
+          {and: [
+            {or: [
+            { creator: "${user}" },
+            { player2: "${user}" }
+            ]},
+            {state: 3},
+            {winner: "0x0000000000000000000000000000000000000000"}
+          ]
+            }){
+          gameId
+          creator
+          player2
+          betAmount
+          expirationDate
+          state
+          winner
+          blockTimestamp
+        }
+      }
+  `
+    )
+  }
+
 
 
   const {state: { isAuthenticated, address, currentChainId, provider, balance, balanceGameUser }} = useContext(Web3Context)
@@ -573,6 +658,33 @@ export default function GameLog() {
       setSearchInput2("")
       setFromBetValue2("")
       setToBetValue2("")
+    } else if(selected2==="Wins"){
+      setQueryFinishedGames(queryFinishedGamesWins(address))
+      setSearchInput2("")
+      setFromBetValue2("")
+      setToBetValue2("")
+      setFromDateValue2("")
+      setToDateValue2("")
+      setFromBetValue2("")
+      setToBetValue2("")
+    } else if(selected2==="Loses"){
+      setQueryFinishedGames(queryFinishedGamesLoses(address))
+      setSearchInput2("")
+      setFromBetValue2("")
+      setToBetValue2("")
+      setFromDateValue2("")
+      setToDateValue2("")
+      setFromBetValue2("")
+      setToBetValue2("")
+    } else if(selected2==="Ties and cancelled games"){
+      setQueryFinishedGames(queryFinishedGamesTiesAndCancelled(address))
+      setSearchInput2("")
+      setFromBetValue2("")
+      setToBetValue2("")
+      setFromDateValue2("")
+      setToDateValue2("")
+      setFromBetValue2("")
+      setToBetValue2("")
     }
   }, [address, selected2, searchInput2, fromBetValue2, toBetValue2, fromDateValue2, toDateValue2])
 
@@ -629,7 +741,7 @@ export default function GameLog() {
             Your finished games:
           </h3>
           {/* Combobox */}
-          <Combobox selected={selected2} setSelected={setSelected2} options={["Select a filter", "Game id", "Opponent address", "Winner address", "Bet amount", "Finishing date"]}/>
+          <Combobox selected={selected2} setSelected={setSelected2} options={["Select a filter", "Game id", "Opponent address", "Winner address", "Bet amount", "Finishing date", "Wins", "Loses", "Ties and cancelled games"]}/>
             {/* Search bar */}
             {(selected2=="Game id" || selected2=="Opponent address" || selected2=="Winner address") ? 
             <div className="input-wrapper w-4/12 ml-10 my-7">
