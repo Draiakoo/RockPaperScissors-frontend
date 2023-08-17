@@ -58,8 +58,9 @@ const useWeb3Provider = () => {
   }, [state.isAuthenticated, state.currentChainId])
 
   const connectWallet = useCallback(async () => {
+    
     if (state.isAuthenticated) return;
-
+    
     try {
       const provider = new Web3(window.ethereum);
 

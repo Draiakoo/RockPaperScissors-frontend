@@ -10,10 +10,10 @@ const client = new ApolloClient({
   uri: "https://api.studio.thegraph.com/query/48685/definitiverps/version/latest",
 })
 
-export const metadata = {
-  title: 'RPS Game',
-  description: 'Secure Rock Paper Scissors game on-chain',
-}
+// export const metadata = {
+//   title: 'RPS Game',
+//   description: 'Secure Rock Paper Scissors game on-chain',
+// }
 
 export default function RootLayout({ children }) {
   return (
